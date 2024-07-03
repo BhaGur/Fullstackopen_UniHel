@@ -4,7 +4,7 @@ const Search = ({ value, onChange }) => {
         filter shown with 
         <input
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange}
         />
       </div>
     );
