@@ -1,3 +1,5 @@
+import CapitalWeather from "./CapitalWeather";
+
 const CountryDetails = ({ country }) => {
     return (
       <div>
@@ -13,6 +15,7 @@ const CountryDetails = ({ country }) => {
         <div>
           <img src={country[0].flags.png} alt={country[0].flags.alt} />
         </div>
+        <CapitalWeather capital={country[0].capital[0]} />
       </div>
     );
   };
