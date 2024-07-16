@@ -8,16 +8,24 @@ const App = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    countriesService.getAll().then((allCountries) => {
-      setCountries(allCountries);
-    });
+    countriesService
+      .getAll()
+      .then((allCountries) => {
+        setCountries(allCountries);
+      });
   }, []);
 
-  const filteredCountries = countries.filter((country) => {
+  const coutriesList = countries.filter((country) => {
     return country.name.common.toLowerCase().includes(search.toLowerCase());
   });
 
-  const handleSearchChange = (e) => setSearch(e.target.value);
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  }
+
+  const handleShow = (country) => {
+    setSearch(country);
+  }
 
   return (
     <div>
@@ -25,7 +33,10 @@ const App = () => {
         value={search}
         onChange={handleSearchChange}
       />
-      <QueryContent filteredCountries={filteredCountries} />
+      <QueryContent 
+        countriesList={coutriesList}
+        handleShow={handleShow} 
+      />
     </div>
   );
 };
